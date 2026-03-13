@@ -95,6 +95,40 @@
         .btn-x  { background: #000; border-radius: 6px; }
         .btn-yt { background: var(--yt); }
         .btn-fb { background: var(--fb); }
+              <script>
+        function createCircles() {
+            const container = document.getElementById('circles-container');
+            const count = 80; // Aumentamos la cantidad significativamente
+            
+            for (let i = 0; i < count; i++) {
+                const circle = document.createElement('div');
+                circle.className = 'circle';
+                
+                const size = Math.random() * 80 + 20; 
+                const left = Math.random() * 100;
+                const duration = Math.random() * 10 + 7; 
+                const delay = Math.random() * 20;
 
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                circle.style.left = `${left}%`;
+                circle.style.animationDuration = `${duration}s`;
+                circle.style.animationDelay = `${delay}s`;
+
+                // Colores más notorios (Blancos y Azules API-X)
+                const colorType = Math.random();
+                if (colorType > 0.6) {
+                    circle.style.background = "rgba(255, 255, 255, 0.9)"; // Blanco
+                } else if (colorType > 0.3) {
+                    circle.style.background = "rgba(0, 168, 255, 0.7)"; // Azul Tech
+                } else {
+                    circle.style.background = "rgba(0, 31, 63, 0.6)";   // Azul Oscuro
+                }
+
+                container.appendChild(circle);
+            }
+        }
+        window.onload = createCircles;
+    </script>
    </style>
 </html>
