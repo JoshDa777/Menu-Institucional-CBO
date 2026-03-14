@@ -1,9 +1,147 @@
-<!doctype html>
-<html lang="es">
-<meta charset="UTF-8">
-<meta name="viewport" content="with=device-with, initial-scale=1.0">
 
-       <script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API-X | Comunidad Indie</title>
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-blue: #001f3f;
+            --tech-blue-light: #00a8ff;
+            --ws: #25D366; --ig: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            --yt: #FF0000; --fb: #1877F2; --dc: #5865F2; --tk: #000;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: #ffffff;
+            font-family: 'Quicksand', sans-serif;
+            color: #333;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; overflow-x: hidden;
+        }
+
+        /* --- Círculos Flotantes Notorios --- */
+        #circles-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
+        }
+
+        .circle {
+            position: absolute;
+            display: block;
+            list-style: none;
+            animation: animate linear infinite;
+            bottom: -150px;
+            border-radius: 50%;
+            /* Sombra para que se noten sobre el fondo blanco */
+            box-shadow: 0 4px 10px rgba(0, 31, 63, 0.2);
+        }
+
+        @keyframes animate {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-1300px) rotate(720deg); opacity: 0; }
+        }
+
+        .container {
+            z-index: 1;
+            width: 90%; max-width: 550px;
+            text-align: center; padding: 40px 0;
+        }
+
+        .logo-apix { width: 160px; margin-bottom: 5px; }
+
+        .main-title {
+            color: var(--brand-blue);
+            font-size: 3.5rem; font-weight: 700;
+            margin: 0 0 10px 0; letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 1);
+        }
+
+        model-viewer { width: 100%; height: 320px; margin: 0 auto; }
+
+        .description {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            padding: 25px; border-radius: 30px;
+            border: 2px solid rgba(0, 31, 63, 0.1);
+            text-align: left; margin: 20px 0 40px 0;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .description h3 { color: var(--brand-blue); margin-top: 0; text-align: center; }
+
+        .links-grid { display: flex; flex-direction: column; gap: 14px; }
+
+        .btn {
+            display: flex; align-items: center; padding: 18px;
+            text-decoration: none; color: white; font-weight: bold;
+            transition: 0.3s; border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover { transform: scale(1.05); }
+        .btn i { width: 40px; font-size: 1.6rem; margin-right: 15px; text-align: center; }
+
+        .btn-ws { background: var(--ws); border-radius: 50px; }
+        .btn-dc { background: var(--dc); }
+        .btn-tk { background: #000; border-left: 5px solid #69c9d0; border-right: 5px solid #ee1d52; }
+        .btn-ig { background: var(--ig); }
+        .btn-x  { background: #000; border-radius: 6px; }
+        .btn-yt { background: var(--yt); }
+        .btn-fb { background: var(--fb); }
+
+    </style>
+</head>
+<body>
+
+    <div id="circles-container"></div>
+
+    <div class="container">
+        <img src="imagen_2025-12-19_000631778.png" alt="Logo API-X" class="logo-apix">
+        <h1 class="main-title">API-X</h1>
+
+        <model-viewer 
+            src="tierra-noche.glb" 
+            auto-rotate rotation-speed="0.6"
+            camera-controls interaction-prompt="none"
+            shadow-intensity="1" disable-zoom>
+        </model-viewer>
+
+        <div class="description">
+            <h3>🚀 Comunidad de Desarrollo Indie</h3>
+            <p>¡Hola! Soy JoshDa. Esta es una <strong>pequeña comunidad de desarrollo independiente</strong> para aficionados y entusiastas.</p>
+            <p>No somos un entorno profesional; somos un grupo de personas a las que nos apasiona "cacharrear" y crear por diversión. Aquí todos aportamos y nos enseñamos sobre:</p>
+            <ul style="padding-left: 20px;">
+                <li>💻 Programación de software independiente.</li>
+                <li>⚙️ Hardware y electrónica casera.</li>
+                <li>🎨 Diseño gráfico y modelado 3D.</li>
+            </ul>
+            <p>Si tienes dudas o quieres mostrar tus avances, ¡únete! Estaré mostrándoles mis proyectos personales por aquí.</p>
+        </div>
+
+        <div class="links-grid">
+            <a href="https://whatsapp.com/channel/0029VbBt6SdLdQejNjTghn0z" class="btn btn-ws"><i class="fab fa-whatsapp"></i> Canal de WhatsApp</a>
+            <a href="https://discord.gg/akhXkvy8uB" class="btn btn-dc"><i class="fab fa-discord"></i> Comunidad Discord</a>
+            <a href="https://www.tiktok.com/@joshuadavidgc" class="btn btn-tk"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="https://www.instagram.com/joshda_api_x/" class="btn btn-ig"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://x.com/JoshDa_API_X" class="btn btn-x"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+            <a href="https://www.youtube.com/@JoshDa_API_X" class="btn btn-yt"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="https://www.facebook.com/share/1GSdQmF7oX/" class="btn btn-fb"><i class="fab fa-facebook-f"></i> Facebook</a>
+        </div>
+    </div>
+
+    <script>
         function createCircles() {
             const container = document.getElementById('circles-container');
             const count = 80; // Aumentamos la cantidad significativamente
@@ -38,5 +176,5 @@
         }
         window.onload = createCircles;
     </script>
-
+</body>
 </html>
