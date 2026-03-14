@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API-X | Comunidad Indie</title>
     
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -102,7 +104,21 @@
 </head>
 <body>
 
+    <div id="circles-container"></div>
 
+    <div class="container">
+
+
+        <model-viewer 
+            src="tierra-noche.glb" 
+            auto-rotate rotation-speed="0.6"
+            camera-controls interaction-prompt="none"
+            shadow-intensity="1" disable-zoom>
+        </model-viewer>
+
+
+        </div>
+    </div>
 
     <script>
         function createCircles() {
