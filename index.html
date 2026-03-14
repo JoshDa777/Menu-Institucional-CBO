@@ -133,14 +133,14 @@
                 circle.style.animationDuration = `${duration}s`;
                 circle.style.animationDelay = `${delay}s`;
 
-                // Colores más notorios (Blancos y Azules API-X)
+                // Colores más notorios (Verde y amarillo del celmira)
                 const colorType = Math.random();
                 if (colorType > 0.6) {
-                    circle.style.background = "rgba(255, 255, 255, 0.9)"; // Blanco
+                    circle.style.background = "rgba(203, 255, 179, 0.9)"; // Verde claro
                 } else if (colorType > 0.3) {
-                    circle.style.background = "rgba(255, 191, 0, 0.7)"; // Azul Tech
+                    circle.style.background = "rgba(255, 191, 0, 0.7)"; // verde
                 } else {
-                    circle.style.background = "rgba(34, 184, 0, 0.6)";   // Azul Oscuro
+                    circle.style.background = "rgba(34, 184, 0, 0.6)";   // amarillo
                 }
 
                 container.appendChild(circle);
