@@ -6,147 +6,178 @@
 
 <title>Menú CBO</title>
 
-<style>
-body {
-    font-family: Arial;
-    text-align: center;
-    background: #f4f7f5;
-}
+<img src="imagen_2026-03-16_152657998.png" alt="Logo CBO" class="logo-cbo">
 
-/* TITULOS */
-h1 {
-    color: #14532d;
+<style>
+:root {
+    --verde: #22c55e;
+    --gris: #6b7280;
+    --blanco: #ffffff;
 }
 
 /* BOTONES */
 button {
     border: none;
     padding: 12px 25px;
-    margin: 10px;
-    border-radius: 30px;
+    margin: 10px 5px; 
+    border-radius: 50px; 
     cursor: pointer;
+    font-size: 1.1em;
     font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-/* COLORES NUEVOS */
-.btn-verde { background: #22c55e; color: white; }
-.btn-gris { background: #9ca3af; color: white; }
-.btn-blanco { background: white; color: #14532d; border: 2px solid #14532d; }
+/* COLORES */
+.btn-verde { background-color: var(--verde); color: white; }
+.btn-gris { background-color: var(--gris); color: white; }
+.btn-blanco { background-color: white; color: black; border: 2px solid black; }
+
+body {
+    margin: 0;
+    background-color: #ffffff;
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* CIRCULOS */
+#circles-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    animation: animate linear infinite;
+}
+
+@keyframes animate {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-1200px); opacity: 0; }
+}
+
+/* CONTENIDO */
+.container {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.main-title {
+    color: #14532d;
+    font-size: 3rem;
+}
+
+/* DESCRIPCIÓN */
+.description {
+    background: rgba(255,255,255,0.6);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px;
+}
 
 /* MENÚ */
 .menu {
     display: none;
-    margin-top: 20px;
     background: white;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 20px;
+    margin-top: 20px;
 }
 
-/* DÍAS */
 .dia {
+    background: #e7f5ec;
     margin: 10px 0;
     padding: 10px;
     border-radius: 10px;
-    background: #e7f5ec;
 }
 </style>
 </head>
 
 <body>
 
-<h1>MENÚ CBO</h1>
+<div id="circles-container"></div>
 
-<p>Consulta tu desayuno o almuerzo según tu jornada</p>
+<div class="container">
 
-<!-- BOTONES PRINCIPALES -->
+<h1 class="main-title">MENÚ</h1>
+<h1 class="main-title">CBO</h1>
+
+<div class="description">
+<p>Aquí podrás ver el menú de almuerzos de la institución.</p>
+<p>Puedes encontrar los días exactos según tu jornada.</p>
+</div>
+
+<!-- BOTONES -->
+<div class="description">
 <button class="btn-verde" onclick="mostrarMenu('unica')">Jornada Única</button>
 <button class="btn-gris" onclick="mostrarMenu('manana')">Jornada Mañana</button>
 <button class="btn-blanco" onclick="mostrarMenu('tarde')">Jornada Tarde</button>
+</div>
 
-<!-- MENÚ JORNADA ÚNICA -->
+<!-- MENÚS -->
 <div id="unica" class="menu">
-    <h2>Jornada Única (Desayuno + Almuerzo)</h2>
-
-    <div class="dia">
-        <b>Lunes</b><br>
-        Desayuno: Chocolate + pan + fruta<br>
-        Almuerzo: Arroz, pollo guisado, ensalada, jugo
-    </div>
-
-    <div class="dia">
-        <b>Martes</b><br>
-        Desayuno: Leche + galletas<br>
-        Almuerzo: Lentejas, arroz, carne, jugo
-    </div>
-
-    <div class="dia">
-        <b>Miércoles</b><br>
-        Desayuno: Avena + pan<br>
-        Almuerzo: Pasta, pollo, ensalada
-    </div>
-
-    <div class="dia">
-        <b>Jueves</b><br>
-        Desayuno: Chocolate + arepa<br>
-        Almuerzo: Frijoles, arroz, carne
-    </div>
-
-    <div class="dia">
-        <b>Viernes</b><br>
-        Desayuno: Yogurt + cereal<br>
-        Almuerzo: Arroz con pollo + jugo
-    </div>
+<h2>Jornada Única</h2>
+<div class="dia"><b>Lunes:</b> Desayuno + Almuerzo completo</div>
+<div class="dia"><b>Martes:</b> Desayuno + Almuerzo completo</div>
+<div class="dia"><b>Miércoles:</b> Desayuno + Almuerzo completo</div>
+<div class="dia"><b>Jueves:</b> Desayuno + Almuerzo completo</div>
+<div class="dia"><b>Viernes:</b> Desayuno + Almuerzo completo</div>
 </div>
 
-<!-- MENÚ MAÑANA -->
 <div id="manana" class="menu">
-    <h2>Jornada Mañana (Desayuno)</h2>
-
-    <div class="dia">
-        <b>Lunes:</b> Chocolate + pan
-    </div>
-    <div class="dia">
-        <b>Martes:</b> Leche + galletas
-    </div>
-    <div class="dia">
-        <b>Miércoles:</b> Avena + pan
-    </div>
-    <div class="dia">
-        <b>Jueves:</b> Chocolate + arepa
-    </div>
-    <div class="dia">
-        <b>Viernes:</b> Yogurt + cereal
-    </div>
+<h2>Jornada Mañana (Desayuno)</h2>
+<div class="dia">Lunes: Chocolate + pan</div>
+<div class="dia">Martes: Leche + galletas</div>
+<div class="dia">Miércoles: Avena + pan</div>
+<div class="dia">Jueves: Chocolate + arepa</div>
+<div class="dia">Viernes: Yogurt + cereal</div>
 </div>
 
-<!-- MENÚ TARDE -->
 <div id="tarde" class="menu">
-    <h2>Jornada Tarde (Almuerzo)</h2>
+<h2>Jornada Tarde (Almuerzo)</h2>
+<div class="dia">Lunes: Arroz + pollo</div>
+<div class="dia">Martes: Lentejas</div>
+<div class="dia">Miércoles: Pasta</div>
+<div class="dia">Jueves: Frijoles</div>
+<div class="dia">Viernes: Arroz con pollo</div>
+</div>
 
-    <div class="dia">
-        <b>Lunes:</b> Arroz, pollo, ensalada
-    </div>
-    <div class="dia">
-        <b>Martes:</b> Lentejas, arroz, carne
-    </div>
-    <div class="dia">
-        <b>Miércoles:</b> Pasta con pollo
-    </div>
-    <div class="dia">
-        <b>Jueves:</b> Frijoles con arroz
-    </div>
-    <div class="dia">
-        <b>Viernes:</b> Arroz con pollo
-    </div>
 </div>
 
 <script>
 function mostrarMenu(id) {
-    let menus = document.querySelectorAll('.menu');
-    menus.forEach(m => m.style.display = 'none');
-
+    document.querySelectorAll('.menu').forEach(m => m.style.display = 'none');
     document.getElementById(id).style.display = 'block';
 }
+
+/* CIRCULOS */
+function createCircles() {
+    const container = document.getElementById('circles-container');
+
+    for (let i = 0; i < 50; i++) {
+        let c = document.createElement('div');
+        c.className = 'circle';
+
+        let size = Math.random()*60+20;
+        c.style.width = size+"px";
+        c.style.height = size+"px";
+        c.style.left = Math.random()*100+"%";
+        c.style.animationDuration = (Math.random()*10+5)+"s";
+
+        c.style.background = Math.random()>0.5
+            ? "rgba(34,184,0,0.5)"
+            : "rgba(255,191,0,0.6)";
+
+        container.appendChild(c);
+    }
+}
+window.onload = createCircles;
 </script>
 
 </body>
