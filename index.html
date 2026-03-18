@@ -3,47 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Menú CBO</title>
 
-<img src="imagen_2026-03-16_152657998.png" alt="Logo CBO" class="logo-cbo">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
     --verde: #22c55e;
     --gris: #6b7280;
-    --blanco: #ffffff;
+    --brand: #14532d;
 }
-
-/* BOTONES */
-button {
-    border: none;
-    padding: 12px 25px;
-    margin: 10px 5px; 
-    border-radius: 50px; 
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-/* COLORES */
-.btn-verde { background-color: var(--verde); color: white; }
-.btn-gris { background-color: var(--gris); color: white; }
-.btn-blanco { background-color: white; color: black; border: 2px solid black; }
 
 body {
     margin: 0;
-    background-color: #ffffff;
+    background: #ffffff;
     font-family: 'Quicksand', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
 }
 
 /* CIRCULOS */
 #circles-container {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
@@ -51,37 +36,64 @@ body {
 
 .circle {
     position: absolute;
+    bottom: -150px;
     border-radius: 50%;
     animation: animate linear infinite;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 @keyframes animate {
-    0% { transform: translateY(0); opacity: 0; }
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
-    100% { transform: translateY(-1200px); opacity: 0; }
+    100% { transform: translateY(-1300px) rotate(720deg); opacity: 0; }
 }
 
-/* CONTENIDO */
+/* CONTENEDOR */
 .container {
     width: 90%;
     max-width: 600px;
     text-align: center;
+    padding: 30px 0;
+}
+
+.logo {
+    width: 120px;
 }
 
 .main-title {
-    color: #14532d;
+    color: var(--brand);
     font-size: 3rem;
 }
 
-/* DESCRIPCIÓN */
+/* DESCRIPCION */
 .description {
     background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(6px);
     padding: 20px;
     border-radius: 20px;
-    margin: 20px;
+    margin: 20px 0;
 }
 
-/* MENÚ */
+/* BOTONES */
+button {
+    border: none;
+    padding: 12px 25px;
+    margin: 8px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.btn-verde { background: var(--verde); color: white; }
+.btn-gris { background: var(--gris); color: white; }
+.btn-blanco { background: white; border: 2px solid var(--brand); color: var(--brand); }
+
+/* MENUS */
 .menu {
     display: none;
     background: white;
@@ -105,12 +117,13 @@ body {
 
 <div class="container">
 
-<h1 class="main-title">MENÚ</h1>
-<h1 class="main-title">CBO</h1>
+<img src="imagen_2026-03-16_152657998.png" class="logo">
+
+<h1 class="main-title">MENÚ CBO</h1>
 
 <div class="description">
 <p>Aquí podrás ver el menú de almuerzos de la institución.</p>
-<p>Puedes encontrar los días exactos según tu jornada.</p>
+<p>Puedes consultar según tu jornada (mañana, tarde o jornada única).</p>
 </div>
 
 <!-- BOTONES -->
@@ -120,18 +133,19 @@ body {
 <button class="btn-blanco" onclick="mostrarMenu('tarde')">Jornada Tarde</button>
 </div>
 
-<!-- MENÚS -->
+<!-- MENUS -->
+
 <div id="unica" class="menu">
 <h2>Jornada Única</h2>
-<div class="dia"><b>Lunes:</b> Desayuno + Almuerzo completo</div>
-<div class="dia"><b>Martes:</b> Desayuno + Almuerzo completo</div>
-<div class="dia"><b>Miércoles:</b> Desayuno + Almuerzo completo</div>
-<div class="dia"><b>Jueves:</b> Desayuno + Almuerzo completo</div>
-<div class="dia"><b>Viernes:</b> Desayuno + Almuerzo completo</div>
+<div class="dia"><b>Lunes:</b> Desayuno + Almuerzo</div>
+<div class="dia"><b>Martes:</b> Desayuno + Almuerzo</div>
+<div class="dia"><b>Miércoles:</b> Desayuno + Almuerzo</div>
+<div class="dia"><b>Jueves:</b> Desayuno + Almuerzo</div>
+<div class="dia"><b>Viernes:</b> Desayuno + Almuerzo</div>
 </div>
 
 <div id="manana" class="menu">
-<h2>Jornada Mañana (Desayuno)</h2>
+<h2>Jornada Mañana</h2>
 <div class="dia">Lunes: Chocolate + pan</div>
 <div class="dia">Martes: Leche + galletas</div>
 <div class="dia">Miércoles: Avena + pan</div>
@@ -140,7 +154,7 @@ body {
 </div>
 
 <div id="tarde" class="menu">
-<h2>Jornada Tarde (Almuerzo)</h2>
+<h2>Jornada Tarde</h2>
 <div class="dia">Lunes: Arroz + pollo</div>
 <div class="dia">Martes: Lentejas</div>
 <div class="dia">Miércoles: Pasta</div>
@@ -151,32 +165,51 @@ body {
 </div>
 
 <script>
+// CAMBIO DE MENUS
 function mostrarMenu(id) {
     document.querySelectorAll('.menu').forEach(m => m.style.display = 'none');
     document.getElementById(id).style.display = 'block';
 }
 
-/* CIRCULOS */
+// CIRCULOS INFINITOS
 function createCircles() {
     const container = document.getElementById('circles-container');
+    const count = 80;
 
-    for (let i = 0; i < 50; i++) {
-        let c = document.createElement('div');
-        c.className = 'circle';
+    for (let i = 0; i < count; i++) {
+        const circle = document.createElement('div');
+        circle.className = 'circle';
 
-        let size = Math.random()*60+20;
-        c.style.width = size+"px";
-        c.style.height = size+"px";
-        c.style.left = Math.random()*100+"%";
-        c.style.animationDuration = (Math.random()*10+5)+"s";
+        const size = Math.random() * 80 + 20;
+        const left = Math.random() * 100;
+        const duration = Math.random() * 10 + 10;
+        const delay = Math.random() * 20;
 
-        c.style.background = Math.random()>0.5
-            ? "rgba(34,184,0,0.5)"
-            : "rgba(255,191,0,0.6)";
+        circle.style.width = size + "px";
+        circle.style.height = size + "px";
+        circle.style.left = left + "%";
+        circle.style.animationDuration = duration + "s";
+        circle.style.animationDelay = delay + "s";
 
-        container.appendChild(c);
+        const colorType = Math.random();
+        if (colorType > 0.6) {
+            circle.style.background = "rgba(34,184,0,0.5)";
+        } else if (colorType > 0.3) {
+            circle.style.background = "rgba(255,191,0,0.7)";
+        } else {
+            circle.style.background = "rgba(34,184,0,0.3)";
+        }
+
+        container.appendChild(circle);
     }
 }
+
+// regeneración automática
+setInterval(() => {
+    document.getElementById('circles-container').innerHTML = "";
+    createCircles();
+}, 20000);
+
 window.onload = createCircles;
 </script>
 
