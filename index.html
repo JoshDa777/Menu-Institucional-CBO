@@ -8,8 +8,8 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
+    background: white;
+    color: #222;
     overflow-x: hidden;
 }
 
@@ -18,34 +18,38 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     z-index: -1;
+    overflow: hidden;
 }
 
 .circle {
     position: absolute;
     bottom: -150px;
     border-radius: 50%;
-    animation: rise linear infinite;
-    will-change: transform;
+    animation: subir linear infinite;
+    opacity: 0.5;
 }
 
-@keyframes rise {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-120vh);
-    }
+@keyframes subir {
+    from { transform: translateY(0); }
+    to { transform: translateY(-120vh); }
 }
 
-/* Contenido */
+/* Contenedor */
 .container {
-    padding: 20px;
     max-width: 900px;
     margin: auto;
+    padding: 20px;
 }
 
+/* Logo */
+.logo {
+    display: block;
+    margin: auto;
+    width: 120px;
+}
+
+/* Títulos */
 h1 {
     text-align: center;
 }
@@ -53,7 +57,7 @@ h1 {
 .descripcion {
     text-align: center;
     margin-bottom: 20px;
-    opacity: 0.8;
+    color: #555;
 }
 
 /* Botones */
@@ -65,19 +69,18 @@ h1 {
 button {
     padding: 10px 20px;
     margin: 5px;
-    border: none;
     border-radius: 8px;
+    border: none;
     background: #22c55e;
     color: white;
     cursor: pointer;
-    font-weight: bold;
 }
 
 button:hover {
     background: #16a34a;
 }
 
-/* Menú */
+/* Menús */
 .menu {
     display: none;
 }
@@ -87,7 +90,7 @@ button:hover {
 }
 
 .dia {
-    background: rgba(255,255,255,0.05);
+    background: #f3f4f6;
     padding: 15px;
     margin: 10px 0;
     border-radius: 10px;
@@ -100,10 +103,14 @@ button:hover {
 <div id="circles-container"></div>
 
 <div class="container">
-<h1>🍽️ Menú Escolar</h1>
+
+<!-- LOGO -->
+<img src="logo.png" class="logo">
+
+<h1>Menú Escolar</h1>
 
 <div class="descripcion">
-Consulta el menú semanal de la institución para cada jornada.
+Consulta el menú semanal de cada jornada de la institución.
 </div>
 
 <div class="botones">
@@ -117,75 +124,18 @@ Consulta el menú semanal de la institución para cada jornada.
 <h2>Jornada Mañana</h2>
 
 <h3>Semana 3</h3>
-
-<div class="dia"><b>Lunes:</b><br>
-Agua de panela con leche<br>
-Huevos con tomate<br>
-Arroz + chips de papa<br>
-Piña
-</div>
-
-<div class="dia"><b>Martes:</b><br>
-Agua de panela con limón<br>
-Chuleta de cerdo<br>
-Arroz verde + plátano con queso
-</div>
-
-<div class="dia"><b>Miércoles:</b><br>
-Sorbete de banano<br>
-Queso cuajada<br>
-Arepa<br>
-Mango
-</div>
-
-<div class="dia"><b>Jueves:</b><br>
-Sorbete de mango<br>
-Pollo en salsa tropical<br>
-Puré + arroz
-</div>
-
-<div class="dia"><b>Viernes:</b><br>
-Chocolate<br>
-Huevos pericos<br>
-Arroz + torta de papa<br>
-Papaya
-</div>
+<div class="dia">Lunes: Panela con leche, huevos, arroz, piña</div>
+<div class="dia">Martes: Panela limón, cerdo, arroz, plátano</div>
+<div class="dia">Miércoles: Banano, queso, arepa, mango</div>
+<div class="dia">Jueves: Mango, pollo, puré y arroz</div>
+<div class="dia">Viernes: Chocolate, huevos, arroz, papaya</div>
 
 <h3>Semana 4</h3>
-
-<div class="dia"><b>Lunes:</b><br>
-Chocolate<br>
-Huevos pericos<br>
-Arepa + arroz<br>
-Pera
-</div>
-
-<div class="dia"><b>Martes:</b><br>
-Sorbete de guanábana<br>
-Hamburguesa de pollo<br>
-Pan + papa criolla
-</div>
-
-<div class="dia"><b>Miércoles:</b><br>
-Chocolate<br>
-Huevos con tomate<br>
-Masitas<br>
-Piña
-</div>
-
-<div class="dia"><b>Jueves:</b><br>
-Sorbete de fresa<br>
-Cerdo salteado<br>
-Papa aborrajada + arroz<br>
-Mandarina
-</div>
-
-<div class="dia"><b>Viernes:</b><br>
-Jugo de lulo<br>
-Frijoles<br>
-Arroz + plátano
-</div>
-
+<div class="dia">Lunes: Chocolate, huevos, arepa, pera</div>
+<div class="dia">Martes: Guanábana, hamburguesa, pan</div>
+<div class="dia">Miércoles: Chocolate, huevos, masitas</div>
+<div class="dia">Jueves: Fresa, cerdo, arroz, mandarina</div>
+<div class="dia">Viernes: Lulo, frijoles, arroz</div>
 </div>
 
 <!-- TARDE -->
@@ -193,21 +143,18 @@ Arroz + plátano
 <h2>Jornada Tarde</h2>
 
 <h3>Semana 3</h3>
-
-<div class="dia"><b>Lunes:</b> Sorbete guayaba-maracuyá + huevos + arroz + mango</div>
-<div class="dia"><b>Martes:</b> Sorbete fresa + pollo + arroz + piña</div>
-<div class="dia"><b>Miércoles:</b> Jugo maracuyá + carne + frijoles + arroz</div>
-<div class="dia"><b>Jueves:</b> Panela limón + hamburguesa + papas</div>
-<div class="dia"><b>Viernes:</b> Sorbete guayaba + lentejas + arroz</div>
+<div class="dia">Lunes: Guayaba, huevos, arroz, mango</div>
+<div class="dia">Martes: Fresa, pollo, arroz, piña</div>
+<div class="dia">Miércoles: Maracuyá, carne, arroz</div>
+<div class="dia">Jueves: Panela, hamburguesa, papas</div>
+<div class="dia">Viernes: Guayaba, lentejas, arroz</div>
 
 <h3>Semana 4</h3>
-
-<div class="dia"><b>Lunes:</b> Sorbete banano + huevos + arroz + manzana</div>
-<div class="dia"><b>Martes:</b> Sorbete maracuyá + pollo + arroz</div>
-<div class="dia"><b>Miércoles:</b> Sorbete guanábana + pollo + arroz</div>
-<div class="dia"><b>Jueves:</b> Jugo piña + cerdo + arroz</div>
-<div class="dia"><b>Viernes:</b> Sorbete guayaba + espagueti + arroz</div>
-
+<div class="dia">Lunes: Banano, huevos, arroz, manzana</div>
+<div class="dia">Martes: Maracuyá, pollo, arroz</div>
+<div class="dia">Miércoles: Guanábana, pollo, arroz</div>
+<div class="dia">Jueves: Piña, cerdo, arroz</div>
+<div class="dia">Viernes: Guayaba, espagueti, arroz</div>
 </div>
 
 <!-- UNICA -->
@@ -215,21 +162,18 @@ Arroz + plátano
 <h2>Jornada Única</h2>
 
 <h3>Semana 3</h3>
-
-<div class="dia"><b>Lunes:</b> Mango + cerdo + arroz + plátano</div>
-<div class="dia"><b>Martes:</b> Guayaba + pollo + arroz + papa</div>
-<div class="dia"><b>Miércoles:</b> Fresa + cerdo + arroz + papa</div>
-<div class="dia"><b>Jueves:</b> Maracuyá + huevos + arroz + plátano</div>
-<div class="dia"><b>Viernes:</b> Guayaba + pollo + arroz + papa</div>
+<div class="dia">Lunes: Mango, cerdo, arroz</div>
+<div class="dia">Martes: Guayaba, pollo, arroz</div>
+<div class="dia">Miércoles: Fresa, cerdo, arroz</div>
+<div class="dia">Jueves: Maracuyá, huevos, arroz</div>
+<div class="dia">Viernes: Guayaba, pollo, arroz</div>
 
 <h3>Semana 4</h3>
-
-<div class="dia"><b>Lunes:</b> Mango + cerdo + arroz</div>
-<div class="dia"><b>Martes:</b> Fresa + huevos + arroz</div>
-<div class="dia"><b>Miércoles:</b> Guayaba + res + arroz</div>
-<div class="dia"><b>Jueves:</b> Tomate + cerdo + arroz</div>
-<div class="dia"><b>Viernes:</b> Fresa + pollo + arroz</div>
-
+<div class="dia">Lunes: Mango, cerdo, arroz</div>
+<div class="dia">Martes: Fresa, huevos, arroz</div>
+<div class="dia">Miércoles: Guayaba, res, arroz</div>
+<div class="dia">Jueves: Tomate, cerdo, arroz</div>
+<div class="dia">Viernes: Fresa, pollo, arroz</div>
 </div>
 
 </div>
@@ -240,16 +184,16 @@ function mostrarMenu(id) {
     document.getElementById(id).classList.add('activo');
 }
 
-/* Círculos */
 function createCircles() {
     const container = document.getElementById('circles-container');
-    for (let i = 0; i < 80; i++) {
+
+    for (let i = 0; i < 70; i++) {
         const circle = document.createElement('div');
         circle.className = 'circle';
 
-        const size = Math.random() * 80 + 20;
+        const size = Math.random() * 60 + 20;
         const left = Math.random() * 100;
-        const duration = Math.random() * 10 + 7;
+        const duration = Math.random() * 10 + 10;
         const delay = Math.random() * 20;
 
         circle.style.width = size + "px";
@@ -258,9 +202,10 @@ function createCircles() {
         circle.style.animationDuration = duration + "s";
         circle.style.animationDelay = delay + "s";
 
+        // Verde o amarillo
         circle.style.background = Math.random() > 0.5
             ? "rgba(34,197,94,0.4)"
-            : "rgba(255,255,255,0.2)";
+            : "rgba(255,204,0,0.5)";
 
         container.appendChild(circle);
     }
