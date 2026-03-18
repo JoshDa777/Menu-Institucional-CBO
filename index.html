@@ -2,118 +2,94 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menú CBO</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+<title>Menú Escolar</title>
 
 <style>
-:root {
-    --brand-blue: #001f3f;
-    --verde: #22c55e;
-    --gris: #6b7280;
-}
-
-/* BODY */
 body {
     margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    font-family: 'Quicksand', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
     overflow-x: hidden;
 }
 
-/* CIRCULOS */
+/* Fondo animado */
 #circles-container {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     z-index: -1;
-    pointer-events: none;
 }
 
 .circle {
     position: absolute;
     bottom: -150px;
     border-radius: 50%;
-    animation: animate linear infinite;
-    box-shadow: 0 4px 10px rgba(0, 31, 63, 0.2);
+    animation: rise linear infinite;
     will-change: transform;
 }
 
-@keyframes animate {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(-1300px) rotate(720deg); opacity: 0; }
+@keyframes rise {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-120vh);
+    }
 }
 
-/* CONTENEDOR */
+/* Contenido */
 .container {
-    width: 90%;
-    max-width: 550px;
-    text-align: center;
-    padding: 40px 0;
-}
-
-.logo {
-    width: 140px;
-    margin-bottom: 10px;
-}
-
-.main-title {
-    color: var(--brand-blue);
-    font-size: 3rem;
-    font-weight: bold;
-}
-
-/* DESCRIPCION */
-.description {
-    background: rgba(255,255,255,0.5);
-    backdrop-filter: blur(5px);
     padding: 20px;
-    border-radius: 20px;
-    margin: 20px 0;
-    text-align: left;
+    max-width: 900px;
+    margin: auto;
 }
 
-/* BOTONES */
+h1 {
+    text-align: center;
+}
+
+.descripcion {
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+/* Botones */
+.botones {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 button {
+    padding: 10px 20px;
+    margin: 5px;
     border: none;
-    padding: 12px 25px;
-    margin: 10px;
-    border-radius: 50px;
+    border-radius: 8px;
+    background: #22c55e;
+    color: white;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.3s;
 }
 
 button:hover {
-    transform: scale(1.05);
+    background: #16a34a;
 }
 
-.btn-verde { background: var(--verde); color: white; }
-.btn-gris { background: var(--gris); color: white; }
-.btn-blanco { background: white; border: 2px solid var(--brand-blue); }
-
-/* MENUS */
+/* Menú */
 .menu {
     display: none;
-    background: white;
-    padding: 20px;
-    border-radius: 20px;
-    margin-top: 20px;
+}
+
+.menu.activo {
+    display: block;
 }
 
 .dia {
-    background: #e7f5ec;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
     margin: 10px 0;
-    padding: 10px;
     border-radius: 10px;
 }
 </style>
@@ -124,66 +100,150 @@ button:hover {
 <div id="circles-container"></div>
 
 <div class="container">
+<h1>🍽️ Menú Escolar</h1>
 
-<img src="imagen_2026-03-16_152657998.png" class="logo">
-
-<h1 class="main-title">MENÚ CBO</h1>
-
-<div class="description">
-<p>Aquí podrás ver el menú de almuerzos de la institución.</p>
-<p>Consulta según tu jornada (mañana, tarde o jornada única).</p>
+<div class="descripcion">
+Consulta el menú semanal de la institución para cada jornada.
 </div>
 
-<!-- BOTONES -->
-<div class="description" style="text-align:center;">
-<button class="btn-verde" onclick="mostrarMenu('unica')">Jornada Única</button>
-<button class="btn-gris" onclick="mostrarMenu('manana')">Jornada Mañana</button>
-<button class="btn-blanco" onclick="mostrarMenu('tarde')">Jornada Tarde</button>
+<div class="botones">
+<button onclick="mostrarMenu('manana')">Mañana</button>
+<button onclick="mostrarMenu('tarde')">Tarde</button>
+<button onclick="mostrarMenu('unica')">Jornada Única</button>
 </div>
 
-<!-- MENUS -->
+<!-- MAÑANA -->
+<div id="manana" class="menu activo">
+<h2>Jornada Mañana</h2>
+
+<h3>Semana 3</h3>
+
+<div class="dia"><b>Lunes:</b><br>
+Agua de panela con leche<br>
+Huevos con tomate<br>
+Arroz + chips de papa<br>
+Piña
+</div>
+
+<div class="dia"><b>Martes:</b><br>
+Agua de panela con limón<br>
+Chuleta de cerdo<br>
+Arroz verde + plátano con queso
+</div>
+
+<div class="dia"><b>Miércoles:</b><br>
+Sorbete de banano<br>
+Queso cuajada<br>
+Arepa<br>
+Mango
+</div>
+
+<div class="dia"><b>Jueves:</b><br>
+Sorbete de mango<br>
+Pollo en salsa tropical<br>
+Puré + arroz
+</div>
+
+<div class="dia"><b>Viernes:</b><br>
+Chocolate<br>
+Huevos pericos<br>
+Arroz + torta de papa<br>
+Papaya
+</div>
+
+<h3>Semana 4</h3>
+
+<div class="dia"><b>Lunes:</b><br>
+Chocolate<br>
+Huevos pericos<br>
+Arepa + arroz<br>
+Pera
+</div>
+
+<div class="dia"><b>Martes:</b><br>
+Sorbete de guanábana<br>
+Hamburguesa de pollo<br>
+Pan + papa criolla
+</div>
+
+<div class="dia"><b>Miércoles:</b><br>
+Chocolate<br>
+Huevos con tomate<br>
+Masitas<br>
+Piña
+</div>
+
+<div class="dia"><b>Jueves:</b><br>
+Sorbete de fresa<br>
+Cerdo salteado<br>
+Papa aborrajada + arroz<br>
+Mandarina
+</div>
+
+<div class="dia"><b>Viernes:</b><br>
+Jugo de lulo<br>
+Frijoles<br>
+Arroz + plátano
+</div>
+
+</div>
+
+<!-- TARDE -->
+<div id="tarde" class="menu">
+<h2>Jornada Tarde</h2>
+
+<h3>Semana 3</h3>
+
+<div class="dia"><b>Lunes:</b> Sorbete guayaba-maracuyá + huevos + arroz + mango</div>
+<div class="dia"><b>Martes:</b> Sorbete fresa + pollo + arroz + piña</div>
+<div class="dia"><b>Miércoles:</b> Jugo maracuyá + carne + frijoles + arroz</div>
+<div class="dia"><b>Jueves:</b> Panela limón + hamburguesa + papas</div>
+<div class="dia"><b>Viernes:</b> Sorbete guayaba + lentejas + arroz</div>
+
+<h3>Semana 4</h3>
+
+<div class="dia"><b>Lunes:</b> Sorbete banano + huevos + arroz + manzana</div>
+<div class="dia"><b>Martes:</b> Sorbete maracuyá + pollo + arroz</div>
+<div class="dia"><b>Miércoles:</b> Sorbete guanábana + pollo + arroz</div>
+<div class="dia"><b>Jueves:</b> Jugo piña + cerdo + arroz</div>
+<div class="dia"><b>Viernes:</b> Sorbete guayaba + espagueti + arroz</div>
+
+</div>
+
+<!-- UNICA -->
 <div id="unica" class="menu">
 <h2>Jornada Única</h2>
-<div class="dia"><b>Lunes:</b> Desayuno + Almuerzo</div>
-<div class="dia"><b>Martes:</b> Desayuno + Almuerzo</div>
-<div class="dia"><b>Miércoles:</b> Desayuno + Almuerzo</div>
-<div class="dia"><b>Jueves:</b> Desayuno + Almuerzo</div>
-<div class="dia"><b>Viernes:</b> Desayuno + Almuerzo</div>
-</div>
 
-<div id="manana" class="menu">
-<h2>Jornada Mañana (Desayuno)</h2>
-<div class="dia">Lunes: Chocolate + pan</div>
-<div class="dia">Martes: Leche + galletas</div>
-<div class="dia">Miércoles: Avena + pan</div>
-<div class="dia">Jueves: Chocolate + arepa</div>
-<div class="dia">Viernes: Yogurt + cereal</div>
-</div>
+<h3>Semana 3</h3>
 
-<div id="tarde" class="menu">
-<h2>Jornada Tarde (Almuerzo)</h2>
-<div class="dia">Lunes: Arroz + pollo</div>
-<div class="dia">Martes: Lentejas</div>
-<div class="dia">Miércoles: Pasta</div>
-<div class="dia">Jueves: Frijoles</div>
-<div class="dia">Viernes: Arroz con pollo</div>
+<div class="dia"><b>Lunes:</b> Mango + cerdo + arroz + plátano</div>
+<div class="dia"><b>Martes:</b> Guayaba + pollo + arroz + papa</div>
+<div class="dia"><b>Miércoles:</b> Fresa + cerdo + arroz + papa</div>
+<div class="dia"><b>Jueves:</b> Maracuyá + huevos + arroz + plátano</div>
+<div class="dia"><b>Viernes:</b> Guayaba + pollo + arroz + papa</div>
+
+<h3>Semana 4</h3>
+
+<div class="dia"><b>Lunes:</b> Mango + cerdo + arroz</div>
+<div class="dia"><b>Martes:</b> Fresa + huevos + arroz</div>
+<div class="dia"><b>Miércoles:</b> Guayaba + res + arroz</div>
+<div class="dia"><b>Jueves:</b> Tomate + cerdo + arroz</div>
+<div class="dia"><b>Viernes:</b> Fresa + pollo + arroz</div>
+
 </div>
 
 </div>
 
 <script>
-// MOSTRAR MENUS
 function mostrarMenu(id) {
-    document.querySelectorAll('.menu').forEach(m => m.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
+    document.querySelectorAll('.menu').forEach(m => m.classList.remove('activo'));
+    document.getElementById(id).classList.add('activo');
 }
 
-// CIRCULOS (SIN REINICIO)
+/* Círculos */
 function createCircles() {
     const container = document.getElementById('circles-container');
-    const count = 80;
-
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < 80; i++) {
         const circle = document.createElement('div');
         circle.className = 'circle';
 
@@ -198,14 +258,9 @@ function createCircles() {
         circle.style.animationDuration = duration + "s";
         circle.style.animationDelay = delay + "s";
 
-        const colorType = Math.random();
-        if (colorType > 0.6) {
-            circle.style.background = "rgba(34, 184, 0, 0.3)";
-        } else if (colorType > 0.3) {
-            circle.style.background = "rgba(255, 191, 0, 0.7)";
-        } else {
-            circle.style.background = "rgba(34, 184, 0, 0.6)";
-        }
+        circle.style.background = Math.random() > 0.5
+            ? "rgba(34,197,94,0.4)"
+            : "rgba(255,255,255,0.2)";
 
         container.appendChild(circle);
     }
